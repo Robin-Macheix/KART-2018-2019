@@ -336,7 +336,7 @@ void loop ()
     TempsEcoule ++;
   }
   
-  if ((millis() - Count1) > 200)
+  if ((millis() - Count1) > 1000)
   {
     Count1 = millis();
     
