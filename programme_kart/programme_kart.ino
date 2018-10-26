@@ -4,8 +4,8 @@
 unsigned int cpt; 
 float Omega;
 float V;
-float Dpneu=0.254;                   //diamètre du pneu arrière en cm
-float Rpneu=Dpneu/2;                 //rayon du pneu arrière en cm
+float Dpneu=0.254;                   //diamètre du pneu arrière en m
+float Rpneu=Dpneu/2;                 //rayon du pneu arrière en m
 long temps;
 
 void Prog_comptage()
