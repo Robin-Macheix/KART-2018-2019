@@ -29,8 +29,10 @@ unsigned long TempsEcoule = 0;
 unsigned long Count0, Count1;
 
 // Définitions pour la vitesse
-#define DIAMETRE_ROUE_MM    866.0f                    // diameter roue en mm
-#define DIAMETRE_ROUE_M     (float) ((float)DIAMETRE_ROUE_MM / 1000.0f) // diameter roue en m
+
+#define DIAMETRE_PNEU       0.254 // en metres (à vérifier)
+#define RAYON_PNEU          DIAMETRE_PNEU / 2
+#define PERIMETRE_PNEU      (float) (2 * PI * RAYON_PNEU)
 
 typedef struct StructVitesse {
   unsigned char     Actuelle;
@@ -176,11 +178,11 @@ void Lecture_Vitesse()
   // Calcul détaillé
   //NbTourParSec = (float) (NbDetectionParSec / 2);
   //NbTourParHeure = (NbTourParSec * 3600);   // tour/heure
-  //Vitesse = NbTourParHeure * DIAMETRE_ROUE_M; // m/heure
+  //Vitesse = NbTourParHeure * PERIMETRE_PNEU; // m/heure
   //Vitesse = Vitesse / 1000; //km/heure
 
   // Calcul optimisé
-  Vitesse.Actuelle = (unsigned char) ((float) Vitesse.NbDetectionParSec * 1.8f * DIAMETRE_ROUE_M);
+  Vitesse.Actuelle = (unsigned char) ((float) Vitesse.NbDetectionParSec * 1.8f * PERIMETRE_PNEU);
 
   Vitesse.MemoCountDemiTour = tempCount;
 }
